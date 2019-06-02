@@ -7,6 +7,7 @@ MOFFOLDER = "C:\\TMP"
 SERVICEACCOUNT = "DBServiceUser"
 SERVICEPASS = "Pass!word1"
 DATABASENAME = "CustomerDB"
+DACPAC_PATH = "C:\\tmp\\**\\*.dacpac"
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
@@ -43,6 +44,12 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
             p = File.expand_path("../", __FILE__)
             s.path = p + "\\Provisioning\\DSC\\InstallConfigureSQLServer.ps1" 
             s.args = [MOFFOLDER, SERVICEACCOUNT, SERVICEPASS, DATABASENAME]
+        end
+
+        db.vm.provision "shell" do |s|
+            p = File.expand_path("../", __FILE__)
+            s.path = p + "\\Provisioning\\Scripts\\DeployDacPac.ps1" 
+            s.args = [DACPAC_PATH, DATABASENAME]
         end
 
     end
