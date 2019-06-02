@@ -17,5 +17,36 @@ namespace CustomerApp.Controllers
                 return View(db.Customers.ToList());
             }
         }
+
+        public ActionResult Create()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Create(Customer customer)
+        {
+            try
+            {
+                using (DataContext db = new DataContext())
+                {
+                    db.Customers.Add(customer);
+                    db.SaveChanges();
+                }
+                return RedirectToAction("Index");
+            }
+            catch
+            {
+                return View();
+            }
+        }
+
+        public ActionResult Details(int id)
+        {
+            using (DataContext db = new DataContext())
+            {
+                return View(db.Customers.Where(x => x.CustomerID == id).FirstOrDefault());
+            }
+        }
     }
 }
