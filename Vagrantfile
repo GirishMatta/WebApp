@@ -19,6 +19,16 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
             v.name = DBSERVERNAME
         end
 
+        db.vm.provision "shell" do |s|
+            p = File.expand_path("../", __FILE__)
+            s.path = p + "\\Provisioning\\Scripts\\SqlDSCResources.ps1" 
+        end
+
+        db.vm.provision "shell" do |s|
+            p = File.expand_path("../", __FILE__)
+            s.path = p + "\\Provisioning\\Scripts\\InstallBuildTools.ps1"
+        end
+
     end
 
     config.vm.define "web" do |web|
