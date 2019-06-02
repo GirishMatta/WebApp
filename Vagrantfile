@@ -5,6 +5,9 @@ DBSERVERNAME = "DBServer01"
 WEBSERVERNAME = "WebServer01"
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
+
+    config.vm.network "private_network", type: "dhcp"
+    
     config.vm.define "db" do |db|
         db.vm.box = VAGRANT_BOX_NAME
         db.vm.box_version = VAGRANT_BOX_VERSION
