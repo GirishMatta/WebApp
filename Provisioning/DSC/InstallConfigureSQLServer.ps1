@@ -38,6 +38,7 @@ Configuration InstallConfigureSQLServer
             DependsOn = "[File]CreateSQLMediFolder"
             Uri = "https://azmedia.blob.core.windows.net/gmatta-azmedia/SQL2017Express.zip"
             DestinationPath = "C:\Media\SQL2017Express\SQL2017Express.zip"
+            MatchSource = $true
         }
 
         Archive UnzipSQLPackage
