@@ -65,6 +65,12 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
             v.name = WEBSERVERNAME
         end
 
+        web.vm.provision "shell" do |s|
+            p = File.expand_path("../", __FILE__)
+            s.path = p + "\\Provisioning\\Scripts\\WebAdminDSCResources.ps1" 
+        end
+        
+        
     end
 
 
