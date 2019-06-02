@@ -74,6 +74,20 @@ Configuration InstallConfigureSQLServer
             ProtocolName = "Tcp"
         }
 
+        Firewall CreateSQLFWRule
+        {
+            DependsOn = "[SqlServerNetwork]EnableTCP1433"
+            Name = "Inbound SQL FW Rule"
+            DisplayName = "Inbound SQL FW Rule"
+            Group = "SQL Firewall Rule Group"
+            Ensure = "Present"
+            Enabled = "True"
+            Profile = ('Public')
+            Direction = "Inbound"
+            LocalPort = "1433"
+            Protocol = "Tcp"
+        }
+
         SqlDatabase CreateDB
         {
             DependsOn = "[SqlSetup]InstallDefaultInstance", "[SqlServerNetwork]EnableTCP1433"
@@ -105,6 +119,21 @@ Configuration InstallConfigureSQLServer
             Name = $SAAccount.UserName
             ServerName = $env:COMPUTERNAME
             InstanceName = "MSSQLSERVER"
+        }
+
+        xRemoteFile DownloadDacFramework
+        {
+            Uri = "https://download.microsoft.com/download/9/5/A/95A27630-B4AE-4F67-B2FA-68165F047CC8/EN/x64/DacFramework.msi"
+            DestinationPath = "C:\Media\DacFramework.msi"
+        }
+
+        package InstallDacFramework
+        {
+            DependsOn = "[xRemoteFile]DownloadDacFramework"
+            Ensure = "Present"
+            Name = "Microsoft SQL Server Data-Tier Application Framework (x64)"
+            path = "C:\Media\DacFramework.msi"
+            ProductId = "DDFFAE0D-0ACA-43ED-B9F3-ADDFB5B07FD9"
         }
     }
 
