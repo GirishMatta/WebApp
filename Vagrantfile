@@ -3,6 +3,7 @@ VAGRANT_BOX_NAME = "gusztavvargadr/windows-server"
 VAGRANT_BOX_VERSION = "1809.0.1901-standard-core"
 DBSERVERNAME = "DBServer01"
 WEBSERVERNAME = "WebServer01"
+MOFFOLDER = "C:\\TMP"
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
@@ -28,6 +29,14 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
             p = File.expand_path("../", __FILE__)
             s.path = p + "\\Provisioning\\Scripts\\InstallBuildTools.ps1"
         end
+
+        db.vm.provision "shell" do |s|
+            p = File.expand_path("../", __FILE__)
+            s.path = p + "\\Provisioning\\DSC\\BuildApplications.ps1" 
+            s.args = [MOFFOLDER]
+        end
+
+        
 
     end
 
