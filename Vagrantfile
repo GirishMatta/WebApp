@@ -75,9 +75,13 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
             s.path = p + "\\Provisioning\\DSC\\InstallConfigureWebServer.ps1"
             s.args = [MOFFOLDER, SERVICEACCOUNT, SERVICEPASS, DBSERVERNAME, DATABASENAME]
         end
+
+        web.vm.provision "shell" do |s|
+            p = File.expand_path("../", __FILE__)
+            s.path = p + "\\Provisioning\\Scripts\\WebSiteWarmUp.ps1"
+            s.args = [WEBSERVERNAME]
+        end
                 
     end
-
-
-
+    
 end
