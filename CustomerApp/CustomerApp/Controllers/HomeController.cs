@@ -75,5 +75,32 @@ namespace CustomerApp.Controllers
                 return View();
             }
         }
+
+        public ActionResult Delete(int id)
+        {
+            using (DataContext db = new DataContext())
+            {
+                return View(db.Customers.Where(x => x.CustomerID == id).FirstOrDefault());
+            }
+        }
+
+        [HttpPost]
+        public ActionResult Delete(int id, Customer customer)
+        {
+            try
+            {
+                using (DataContext db = new DataContext())
+                {
+                    customer = db.Customers.Where(x => x.CustomerID == id).FirstOrDefault();
+                    db.Customers.Remove(customer);
+                    db.SaveChanges();
+                }
+                return RedirectToAction("Index");
+            }
+            catch
+            {
+                return View();
+            }
+        }
     }
 }
