@@ -42,9 +42,9 @@
     *PS> vagrant box add gusztavvargadr/windows-server --box-version 1809.0.1901-standard-core*
 (https://app.vagrantup.com/gusztavvargadr/boxes/windows-server/versions/1809.0.1901-standard-core)
 - Clone the repo https://github.com/GirishMatta/WebApp.git
-    *PS> git clone https://github.com/GirishMatta/WebApp.git*
+*PS> git clone https://github.com/GirishMatta/WebApp.git*
 - Navigate to the WebApp folder and run vagrant up
-    *PS> vagrant up*
+*PS> vagrant up*
 - Browse the URL output at the end of the *vagrant up* command to access the application
 
 The *vagrant up* command takes approximately 35-40 mins to complete, mostly for the VS 2017 Build tools installation. 
