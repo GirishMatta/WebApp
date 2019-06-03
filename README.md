@@ -38,10 +38,10 @@
 - Virtual Machines - Windows Server 2019 Server Core
 
 ## Usage
-- Add Vagrant box gusztavvargadr/windows-server version 1809.0.1901-standard-core 
+- Add Vagrant box gusztavvargadr/windows-server version 1809.0.1901-standard-core <br />
     *PS> vagrant box add gusztavvargadr/windows-server --box-version 1809.0.1901-standard-core*
 (https://app.vagrantup.com/gusztavvargadr/boxes/windows-server/versions/1809.0.1901-standard-core)
-- Clone the repo https://github.com/GirishMatta/WebApp.git
+- Clone the repo https://github.com/GirishMatta/WebApp.git <br />
 *PS> git clone https://github.com/GirishMatta/WebApp.git*
 - Navigate to the WebApp folder and run vagrant up
 *PS> vagrant up*
