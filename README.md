@@ -43,7 +43,7 @@
 (https://app.vagrantup.com/gusztavvargadr/boxes/windows-server/versions/1809.0.1901-standard-core)
 - Clone the repo https://github.com/GirishMatta/WebApp.git <br />
 *PS> git clone https://github.com/GirishMatta/WebApp.git*
-- Navigate to the WebApp folder and run vagrant up
+- Navigate to the WebApp folder and run vagrant up <br />
 *PS> vagrant up*
 - Browse the URL output at the end of the *vagrant up* command to access the application
 
